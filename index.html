@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DelfabLox Store</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary: #6a11cb;
+        --secondary: #2575fc;
+        --accent: #ff3366;
+        --dark: #1a1a2e;
+        --light: #f8f9fa;
+      }
+
+      /* PERUBAHAN PADA BODY DAN BACKGROUND */
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(135deg, #0f0c29);
+        color: white;
+        min-height: 100vh;
+        padding-top: 80px;
+      }
+
+      .navbar {
+        background: rgba(26, 26, 46, 0.95);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        padding: 15px 0;
+      }
+
+      .hero {
+        padding: 80px 0;
+        text-align: center;
+        border-radius: 20px;
+        margin: 30px 0;
+        animation: fadeIn 1.5s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, #0f0c29);
+        animation: pulse 15s infinite linear;
+      }
+
+      .hero h1 {
+        font-size: 3.5rem;
+        font-weight: 700;
+        background: linear-gradient(to right, #ffffff, #d9c6ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 20px;
+        text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        position: relative;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        max-width: 700px;
+        margin: 0 auto 30px;
+        position: relative;
+      }
+
+      .btn-primary {
+        background: linear-gradient(45deg, var(--primary), var(--secondary));
+        border: none;
+        border-radius: 50px;
+        padding: 12px 30px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(106, 17, 203, 0.4);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .btn-primary::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: 0.5s;
+      }
+
+      .btn-primary:hover::before {
+        left: 100%;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(106, 17, 203, 0.6);
+      }
+
+      .btn-whatsapp {
+        background: linear-gradient(45deg, #25d366, #128c7e);
+        color: white;
+        border-radius: 50px;
+        padding: 12px 30px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .btn-whatsapp::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: 0.5s;
+      }
+
+      .btn-whatsapp:hover::before {
+        left: 100%;
+      }
+
+      .btn-whatsapp:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
+        color: white;
+      }
+
+      .btn-donation {
+        background: linear-gradient(45deg, #ff3366, #ff3366);
+        color: white;
+        border-radius: 50px;
+        padding: 12px 30px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(255, 51, 102, 0.4);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .btn-donation::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: 0.5s;
+      }
+
+      .btn-donation:hover::before {
+        left: 100%;
+      }
+
+      .btn-donation:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(255, 51, 102, 0.6);
+        color: white;
+      }
+
+      .btn-tiktok {
+        background: linear-gradient(45deg, #000000, #25f4ee, #fe2c55);
+        color: white;
+        border-radius: 50px;
+        padding: 12px 30px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .btn-tiktok::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: 0.5s;
+      }
+
+      .btn-tiktok:hover::before {
+        left: 100%;
+      }
+
+      .btn-tiktok:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+        color: white;
+      }
+
+      .card {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        color: white;
+        margin-bottom: 20px;
+        overflow: hidden;
+      }
+
+      .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      .section-title {
+        text-align: center;
+        margin: 60px 0 40px;
+        font-size: 2.5rem;
+        font-weight: 700;
+        background: linear-gradient(to right, #ffffff, #d9c6ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        position: relative;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 4px;
+        background: linear-gradient(to right, #ffffff, #d9c6ff);
+        border-radius: 2px;
+      }
+
+      .social-icon {
+        font-size: 2rem;
+        margin: 0 15px;
+        color: white;
+        transition: all 0.3s ease;
+        display: inline-block;
+      }
+
+      .social-icon:hover {
+        transform: scale(1.2) rotate(5deg);
+        color: var(--accent);
+      }
+
+      footer {
+        background: rgba(26, 26, 46, 0.9);
+        padding: 30px 0;
+        margin-top: 60px;
+        text-align: center;
+        position: relative;
+      }
+
+      .floating {
+        animation: float 3s ease-in-out infinite;
+      }
+
+      .roblox-username {
+        background: linear-gradient(45deg, #ff3333, #ff9966);
+        padding: 10px 20px;
+        border-radius: 30px;
+        display: inline-block;
+        margin: 15px 0;
+        font-weight: 600;
+        box-shadow: 0 5px 15px rgba(255, 153, 102, 0.3);
+        animation: pulse 2s infinite;
+      }
+
+      /* PERUBAHAN PADA WARNING-NOTE: MEMPERPANJANG KOTAK */
+      .warning-note {
+        background: rgba(255, 51, 102, 0.2);
+        border-left: 4px solid var(--accent);
+        padding: 15px;
+        border-radius: 8px;
+        margin: 20px 0;
+        position: relative;
+        overflow: hidden;
+        width: 100%; /* Menambahkan lebar penuh */
+        text-align: center; /* Teks menjadi rata tengah */
+      }
+
+      .warning-note::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.1),
+          transparent
+        );
+        animation: shine 3s infinite;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-15px);
+        }
+        100% {
+          transform: translateY(0px);
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      @keyframes shine {
+        0% {
+          transform: translateX(-100%);
+        }
+        100% {
+          transform: translateX(100%);
+        }
+      }
+
+      /* PERUBAHAN PADA CHANNEL ITEM - LEBIH HORIZONTAL */
+      .channel-item {
+        padding: 25px;
+        border-radius: 15px;
+        background: rgba(255, 255, 255, 0.05);
+        margin: 15px 0;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+      }
+
+      .channel-item:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateX(0) scale(1.02);
+      }
+
+      .channel-content {
+        display: flex;
+        align-items: center;
+        flex: 1;
+      }
+
+      .channel-icon {
+        font-size: 2.2rem;
+        margin-right: 20px;
+        min-width: 50px;
+        text-align: center;
+      }
+
+      .channel-text {
+        flex: 1;
+      }
+
+      .channel-text h5 {
+        margin-bottom: 5px;
+        font-weight: 600;
+      }
+
+      .channel-text p {
+        margin-bottom: 0;
+        opacity: 0.9;
+        font-size: 0.95rem;
+      }
+
+      .channel-action {
+        margin-left: 20px;
+      }
+
+      .logo-text {
+        font-size: 2rem;
+        font-weight: 700;
+        background: linear-gradient(to right, #ffffff, #d9c6ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .tiktok-section {
+        margin-top: 30px;
+        text-align: center;
+      }
+
+      @media (max-width: 992px) {
+        .channel-item {
+          flex-direction: column;
+          text-align: center;
+          padding: 20px;
+        }
+
+        .channel-content {
+          flex-direction: column;
+          margin-bottom: 15px;
+        }
+
+        .channel-icon {
+          margin-right: 0;
+          margin-bottom: 15px;
+        }
+
+        .channel-action {
+          margin-left: 0;
+          margin-top: 15px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .hero p {
+          font-size: 1rem;
+        }
+
+        .btn-primary,
+        .btn-whatsapp,
+        .btn-donation,
+        .btn-tiktok {
+          padding: 10px 20px;
+          font-size: 0.9rem;
+          margin: 5px 0;
+        }
+
+        .section-title {
+          font-size: 2rem;
+        }
+
+        .channel-item {
+          padding: 15px;
+        }
+
+        .channel-icon {
+          font-size: 1.8rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <i class="fas fa-store me-2"></i>
+          <span class="logo-text">DELFABLOX STORE</span>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#donation">Donasi</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Kontak</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#tiktok">TikTok</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Konten Utama -->
+    <div class="container main-container">
+      <div class="hero">
+        <div class="floating">
+          <i
+            class="fas fa-store fa-4x mb-4"
+            style="
+              background: linear-gradient(to right, #ffffff, #d9c6ff);
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+            "
+          ></i>
+        </div>
+        <h1>DELFABLOX STORE</h1>
+        <p class="lead">
+          Tempat terpercaya untuk pembelian item game dengan harga terbaik dan
+          proses cepat!
+        </p>
+
+        <div class="my-4">
+          <div class="roblox-username">
+            <i class="fas fa-user-circle me-2"></i>USER NAME ROBLOX:
+            <strong>UMEN0929</strong>
+          </div>
+        </div>
+
+        <!-- Kotak peringatan yang sudah diperpanjang -->
+        <div class="warning-note">
+          <i class="fas fa-exclamation-circle me-2"></i> SELAIN ITU CLONE!
+          JANGAN LUPA BERTANYA SEBELUM MEMBELI!
+        </div>
+
+        <div class="mt-5">
+          <a
+            href="https://wa.me/628xxxxxxxxx?text=Halo%20DelfabLox%20Store,%20saya%20ingin%20bertanya%20sebelum%20membeli"
+            class="btn btn-primary btn-lg me-3 mb-2"
+          >
+            <i class="fas fa-shopping-cart me-2"></i>Beli Sekarang
+          </a>
+          <a
+            href="https://wa.me/628xxxxxxxxx?text=Halo%20DelfabLox%20Store,%20saya%20ingin%20testimoni"
+            class="btn btn-whatsapp btn-lg me-3 mb-2"
+          >
+            <i class="fab fa-whatsapp me-2"></i>Testimoni di WA
+          </a>
+          <a href="#donation" class="btn btn-donation btn-lg mb-2">
+            <i class="fas fa-donate me-2"></i>Donasi
+          </a>
+        </div>
+      </div>
+
+      <!-- Donation Section -->
+      <section id="donation" class="my-5 py-5">
+        <h2 class="section-title">Donasi / Pembelian</h2>
+        <div class="row">
+          <div class="col-md-10 mx-auto">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title text-center mb-4">
+                  Saluran Donasi & Pembelian
+                </h4>
+
+                <div class="channel-item">
+                  <div class="channel-content">
+                    <div class="channel-icon">
+                      <i class="fab fa-whatsapp" style="color: #25d366"></i>
+                    </div>
+                    <div class="channel-text">
+                      <h5>WhatsApp UMENGAMING</h5>
+                      <p>
+                        Hubungi kami via WhatsApp untuk pembelian dan informasi
+                        lebih lanjut
+                      </p>
+                    </div>
+                  </div>
+                  <div class="channel-action">
+                    <a
+                      href="https://wa.me/628xxxxxxxxx"
+                      class="btn btn-whatsapp"
+                      >Hubungi</a
+                    >
+                  </div>
+                </div>
+
+                <div class="channel-item">
+                  <div class="channel-content">
+                    <div class="channel-icon">
+                      <i
+                        class="fas fa-money-bill-wave"
+                        style="color: #28a745"
+                      ></i>
+                    </div>
+                    <div class="channel-text">
+                      <h5>Donasi</h5>
+                      <p>
+                        Dukung kami dengan donasi melalui link berikut untuk
+                        pengembangan store
+                      </p>
+                    </div>
+                  </div>
+                  <div class="channel-action">
+                    <a href="https://link-donasi.com" class="btn btn-donation"
+                      >Donasi</a
+                    >
+                  </div>
+                </div>
+
+                <div class="channel-item">
+                  <div class="channel-content">
+                    <div class="channel-icon">
+                      <i class="fab fa-discord" style="color: #5865f2"></i>
+                    </div>
+                    <div class="channel-text">
+                      <h5>Discord UMENGAMING</h5>
+                      <p>
+                        JB WA Steal A Brainrot - Bergabunglah dengan komunitas
+                        Discord kami
+                      </p>
+                    </div>
+                  </div>
+                  <div class="channel-action">
+                    <a
+                      href="https://discord.gg/umengaming"
+                      class="btn btn-primary"
+                      >Join</a
+                    >
+                  </div>
+                </div>
+
+                <div class="channel-item">
+                  <div class="channel-content">
+                    <div class="channel-icon">
+                      <i class="fab fa-facebook" style="color: #1877f2"></i>
+                    </div>
+                    <div class="channel-text">
+                      <h5>Facebook UMENGAMING</h5>
+                      <p>
+                        JB Grub Facebook - Ikuti kami di Facebook untuk update
+                        terbaru
+                      </p>
+                    </div>
+                  </div>
+                  <div class="channel-action">
+                    <a
+                      href="https://www.facebook.com/umengaming"
+                      class="btn btn-primary"
+                      >Follow</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TikTok Section -->
+      <section id="tiktok" class="my-5 py-5 tiktok-section">
+        <h2 class="section-title">TikTok Kami</h2>
+        <div class="row">
+          <div class="col-md-6 mx-auto">
+            <div class="card">
+              <div class="card-body text-center">
+                <i class="fab fa-tiktok fa-4x mb-3" style="color: #25f4ee"></i>
+                <h4 class="card-title">Ikuti Kami di TikTok</h4>
+                <p class="card-text">
+                  Dapatkan konten terbaru dan update promo di TikTok kami
+                </p>
+                <a
+                  href="https://www.tiktok.com/@umengaming"
+                  class="btn btn-tiktok"
+                >
+                  <i class="fab fa-tiktok me-2"></i>Follow di TikTok
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Social Media Section -->
+      <section id="contact" class="my-5 py-5">
+        <h2 class="section-title">Hubungi Kami</h2>
+        <div class="row">
+          <div class="col-md-8 mx-auto">
+            <div class="card">
+              <div class="card-body text-center">
+                <h4 class="card-title mb-4">Ikuti Kami di Media Sosial</h4>
+                <div class="d-flex justify-content-center flex-wrap mb-4">
+                  <a
+                    href="https://www.instagram.com/umengaming"
+                    class="social-icon"
+                  >
+                    <i class="fab fa-instagram"></i>
+                  </a>
+                  <a href="https://discord.gg/umengaming" class="social-icon">
+                    <i class="fab fa-discord"></i>
+                  </a>
+                  <a
+                    href="https://www.facebook.com/umengaming"
+                    class="social-icon"
+                  >
+                    <i class="fab fa-facebook"></i>
+                  </a>
+                  <a href="https://wa.me/628xxxxxxxxx" class="social-icon">
+                    <i class="fab fa-whatsapp"></i>
+                  </a>
+                  <a
+                    href="https://www.tiktok.com/@umengaming"
+                    class="social-icon"
+                  >
+                    <i class="fab fa-tiktok"></i>
+                  </a>
+                </div>
+                <div class="mt-4">
+                  <h5>JB WA Steal A Brainrot</h5>
+                  <h5>JB Grub Facebook</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <p>&copy; 2023 DelfabLox Store. All Rights Reserved.</p>
+        <p>IG: @UMENGAMING | WhatsApp: UMENGAMING | TikTok: @UMENGAMING</p>
+      </div>
+    </footer>
+
+    <!-- Bootstrap & JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Animasi untuk elemen saat di-scroll
+      document.addEventListener("DOMContentLoaded", function () {
+        const animatedElements = document.querySelectorAll(
+          ".card, .channel-item"
+        );
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.style.animation = "fadeIn 1s ease forwards";
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          {
+            threshold: 0.1,
+          }
+        );
+
+        animatedElements.forEach((el) => {
+          el.style.opacity = "0";
+          observer.observe(el);
+        });
+
+        // Tombol WhatsApp
+        const waButtons = document.querySelectorAll('a[href*="wa.me"]');
+        waButtons.forEach((button) => {
+          button.addEventListener("click", function () {
+            alert(
+              "Anda akan diarahkan ke WhatsApp untuk menghubungi admin kami."
+            );
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
