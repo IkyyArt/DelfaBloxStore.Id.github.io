@@ -313,17 +313,20 @@
         animation: pulse 2s infinite;
       }
 
-      /* PERUBAHAN PADA WARNING-NOTE: MEMPERPANJANG KOTAK */
+      /* PERUBAHAN PADA WARNING-NOTE: BACKGROUND DENGAN GRADIENT BIRU */
       .warning-note {
-        background: rgba(255, 51, 102, 0.2);
-        border-left: 4px solid var(--accent);
+        background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+        border-left: 4px solid #6a11cb 0%, #2575fc;
         padding: 15px;
         border-radius: 8px;
         margin: 20px 0;
         position: relative;
         overflow: hidden;
-        width: 100%; /* Menambahkan lebar penuh */
-        text-align: center; /* Teks menjadi rata tengah */
+        width: 100%;
+        text-align: center;
+        color: white;
+        font-weight: 600;
+        box-shadow: 0 5px 15px rgba(37, 117, 252, 0.4);
       }
 
       .warning-note::before {
@@ -336,7 +339,7 @@
         background: linear-gradient(
           90deg,
           transparent,
-          rgba(255, 255, 255, 0.1),
+          rgba(255, 255, 255, 0.2),
           transparent
         );
         animation: shine 3s infinite;
@@ -445,11 +448,6 @@
         -webkit-text-fill-color: transparent;
       }
 
-      .tiktok-section {
-        margin-top: 30px;
-        text-align: center;
-      }
-
       @media (max-width: 992px) {
         .channel-item {
           flex-direction: column;
@@ -532,9 +530,6 @@
             <li class="nav-item">
               <a class="nav-link" href="#contact">Kontak</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#tiktok">TikTok</a>
-            </li>
           </ul>
         </div>
       </div>
@@ -555,18 +550,18 @@
         </div>
         <h1>DELFABLOX STORE</h1>
         <p class="lead">
-          Tempat terpercaya untuk pembelian item game dengan harga terbaik dan
-          proses cepat!
+          Tempat terpercaya untuk pembelian akun & item game roblox dengan harga
+          terbaik dan proses cepat!
         </p>
 
         <div class="my-4">
           <div class="roblox-username">
             <i class="fas fa-user-circle me-2"></i>USER NAME ROBLOX:
-            <strong>UMEN0929</strong>
+            <strong>hhehecehwj</strong>
           </div>
         </div>
 
-        <!-- Kotak peringatan yang sudah diperpanjang -->
+        <!-- Kotak peringatan yang sudah diubah backgroundnya -->
         <div class="warning-note">
           <i class="fas fa-exclamation-circle me-2"></i> SELAIN ITU CLONE!
           JANGAN LUPA BERTANYA SEBELUM MEMBELI!
@@ -574,18 +569,21 @@
 
         <div class="mt-5">
           <a
-            href="https://wa.me/628xxxxxxxxx?text=Halo%20DelfabLox%20Store,%20saya%20ingin%20bertanya%20sebelum%20membeli"
+            href="https://sociabuzz.com/delfabloxstore"
             class="btn btn-primary btn-lg me-3 mb-2"
           >
             <i class="fas fa-shopping-cart me-2"></i>Beli Sekarang
           </a>
           <a
-            href="https://wa.me/628xxxxxxxxx?text=Halo%20DelfabLox%20Store,%20saya%20ingin%20testimoni"
+            href="https://whatsapp.com/channel/0029Vb6A7jlHLHQZQBQ1Vf2C"
             class="btn btn-whatsapp btn-lg me-3 mb-2"
           >
             <i class="fab fa-whatsapp me-2"></i>Testimoni di WA
           </a>
-          <a href="#donation" class="btn btn-donation btn-lg mb-2">
+          <a
+            href="https://sociabuzz.com/ikkypixelized"
+            class="btn btn-donation btn-lg mb-2"
+          >
             <i class="fas fa-donate me-2"></i>Donasi
           </a>
         </div>
@@ -593,7 +591,7 @@
 
       <!-- Donation Section -->
       <section id="donation" class="my-5 py-5">
-        <h2 class="section-title">Donasi / Pembelian</h2>
+        <h2 class="section-title">Donasi & Pembelian</h2>
         <div class="row">
           <div class="col-md-10 mx-auto">
             <div class="card">
@@ -602,13 +600,39 @@
                   Saluran Donasi & Pembelian
                 </h4>
 
+                <!-- ITEM BARU: BELI SEKARANG -->
+                <div class="channel-item">
+                  <div class="channel-content">
+                    <div class="channel-icon">
+                      <i
+                        class="fas fa-shopping-cart"
+                        style="color: #6a11cb"
+                      ></i>
+                    </div>
+                    <div class="channel-text">
+                      <h5>Beli Sekarang</h5>
+                      <p>
+                        Lakukan pembelian akun & item game roblox langsung
+                        melalui Sociabuzz
+                      </p>
+                    </div>
+                  </div>
+                  <div class="channel-action">
+                    <a
+                      href="https://sociabuzz.com/delfabloxstore"
+                      class="btn btn-primary"
+                      >Beli Sekarang Ges</a
+                    >
+                  </div>
+                </div>
+
                 <div class="channel-item">
                   <div class="channel-content">
                     <div class="channel-icon">
                       <i class="fab fa-whatsapp" style="color: #25d366"></i>
                     </div>
                     <div class="channel-text">
-                      <h5>WhatsApp UMENGAMING</h5>
+                      <h5>WhatsApp DelfaBlox Store</h5>
                       <p>
                         Hubungi kami via WhatsApp untuk pembelian dan informasi
                         lebih lanjut
@@ -617,10 +641,33 @@
                   </div>
                   <div class="channel-action">
                     <a
-                      href="https://wa.me/628xxxxxxxxx"
+                      href="https://wa.me/6288227789219?text=Halo%20Admin%20DelfabLox%20Store,%20aku%20mau%20beli%"
                       class="btn btn-whatsapp"
                       >Hubungi</a
                     >
+                  </div>
+                </div>
+
+                <div class="channel-item">
+                  <div class="channel-content">
+                    <div class="channel-icon">
+                      <i class="fab fa-tiktok" style="color: #25f4ee"></i>
+                    </div>
+                    <div class="channel-text">
+                      <h5>TikTok</h5>
+                      <p>
+                        Hubungi kami via TikTok untuk pembelian dan informasi
+                        lebih lanjut
+                      </p>
+                    </div>
+                  </div>
+                  <div class="channel-action">
+                    <a
+                      href="https://www.tiktok.com/@ikkypixelized?_t=ZS-8zR6z1xV90L&_r=1"
+                      class="btn btn-tiktok"
+                    >
+                      <i class="fab fa-tiktok me-2"></i>Follow
+                    </a>
                   </div>
                 </div>
 
@@ -641,30 +688,10 @@
                     </div>
                   </div>
                   <div class="channel-action">
-                    <a href="https://link-donasi.com" class="btn btn-donation"
-                      >Donasi</a
-                    >
-                  </div>
-                </div>
-
-                <div class="channel-item">
-                  <div class="channel-content">
-                    <div class="channel-icon">
-                      <i class="fab fa-discord" style="color: #5865f2"></i>
-                    </div>
-                    <div class="channel-text">
-                      <h5>Discord UMENGAMING</h5>
-                      <p>
-                        JB WA Steal A Brainrot - Bergabunglah dengan komunitas
-                        Discord kami
-                      </p>
-                    </div>
-                  </div>
-                  <div class="channel-action">
                     <a
-                      href="https://discord.gg/umengaming"
-                      class="btn btn-primary"
-                      >Join</a
+                      href="https://sociabuzz.com/ikkypixelized"
+                      class="btn btn-donation"
+                      >Donasi</a
                     >
                   </div>
                 </div>
@@ -675,45 +702,37 @@
                       <i class="fab fa-facebook" style="color: #1877f2"></i>
                     </div>
                     <div class="channel-text">
-                      <h5>Facebook UMENGAMING</h5>
-                      <p>
-                        JB Grub Facebook - Ikuti kami di Facebook untuk update
-                        terbaru
-                      </p>
+                      <h5>Facebook</h5>
+                      <p>Ikuti kami di Facebook untuk update terbaru</p>
                     </div>
                   </div>
                   <div class="channel-action">
                     <a
-                      href="https://www.facebook.com/umengaming"
+                      href="https://www.facebook.com/delfablox.store.id/"
                       class="btn btn-primary"
                       >Follow</a
                     >
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      <!-- TikTok Section -->
-      <section id="tiktok" class="my-5 py-5 tiktok-section">
-        <h2 class="section-title">TikTok Kami</h2>
-        <div class="row">
-          <div class="col-md-6 mx-auto">
-            <div class="card">
-              <div class="card-body text-center">
-                <i class="fab fa-tiktok fa-4x mb-3" style="color: #25f4ee"></i>
-                <h4 class="card-title">Ikuti Kami di TikTok</h4>
-                <p class="card-text">
-                  Dapatkan konten terbaru dan update promo di TikTok kami
-                </p>
-                <a
-                  href="https://www.tiktok.com/@umengaming"
-                  class="btn btn-tiktok"
-                >
-                  <i class="fab fa-tiktok me-2"></i>Follow di TikTok
-                </a>
+                <div class="channel-item">
+                  <div class="channel-content">
+                    <div class="channel-icon">
+                      <i class="fab fa-discord" style="color: #5865f2"></i>
+                    </div>
+                    <div class="channel-text">
+                      <h5>Discord</h5>
+                      <p>Bergabunglah dengan komunitas Discord kami</p>
+                    </div>
+                  </div>
+                  <div class="channel-action">
+                    <a
+                      href="https://discord.gg/kAnDMdSg"
+                      class="btn btn-primary"
+                      >Join</a
+                    >
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -730,7 +749,7 @@
                 <h4 class="card-title mb-4">Ikuti Kami di Media Sosial</h4>
                 <div class="d-flex justify-content-center flex-wrap mb-4">
                   <a
-                    href="https://www.instagram.com/umengaming"
+                    href="https://www.instagram.com/delfablox.store.id?igsh=MWdheHo2c3p0aHExdQ%3D%3D"
                     class="social-icon"
                   >
                     <i class="fab fa-instagram"></i>
@@ -739,12 +758,12 @@
                     <i class="fab fa-discord"></i>
                   </a>
                   <a
-                    href="https://www.facebook.com/umengaming"
+                    href="https://www.facebook.com/delfablox.store.id/"
                     class="social-icon"
                   >
                     <i class="fab fa-facebook"></i>
                   </a>
-                  <a href="https://wa.me/628xxxxxxxxx" class="social-icon">
+                  <a href="https://wa.me/6288227789219" class="social-icon">
                     <i class="fab fa-whatsapp"></i>
                   </a>
                   <a
@@ -755,8 +774,8 @@
                   </a>
                 </div>
                 <div class="mt-4">
-                  <h5>JB WA Steal A Brainrot</h5>
-                  <h5>JB Grub Facebook</h5>
+                  <h5>TERIMAKASIH SUDAH BELI & DONASI DISINI</h5>
+                  <h5>SUKSES SELALU GES</h5>
                 </div>
               </div>
             </div>
@@ -768,8 +787,11 @@
     <!-- Footer -->
     <footer>
       <div class="container">
-        <p>&copy; 2023 DelfabLox Store. All Rights Reserved.</p>
-        <p>IG: @UMENGAMING | WhatsApp: UMENGAMING | TikTok: @UMENGAMING</p>
+        <p>&copy; 2024 DelfaBLox Store. All Rights Reserved.</p>
+        <p>
+          IG: @delfablox.store.id | WhatsApp: +6288227789219 | TikTok:
+          @delfablox_official
+        </p>
       </div>
     </footer>
 
