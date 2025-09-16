@@ -23,6 +23,8 @@
         --accent: #ff3366;
         --dark: #1a1a2e;
         --light: #f8f9fa;
+        --background: #0f0c29; /* Warna background solid */
+        --testimonial: #13b713; /* Warna baru untuk testimoni */
       }
 
       /* PERUBAHAN PADA BODY DAN BACKGROUND */
@@ -31,14 +33,52 @@
         height: 100%;
         margin: 0;
         padding: 0;
+        scroll-behavior: smooth;
       }
 
       body {
         font-family: "Poppins", sans-serif;
-        background: linear-gradient(135deg, #0f0c29);
+        background-color: var(--background);
         color: white;
         min-height: 100vh;
         padding-top: 80px;
+        position: relative;
+        overflow-x: hidden;
+      }
+
+      /* Efek partikel latar belakang */
+      .particles-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        overflow: hidden;
+      }
+
+      .particle {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.1);
+        animation: floatParticle 15s infinite linear;
+      }
+
+      @keyframes floatParticle {
+        0% {
+          transform: translateY(0) translateX(0);
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        90% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-100vh) translateX(100px);
+          opacity: 0;
+        }
       }
 
       .navbar {
@@ -46,10 +86,16 @@
         backdrop-filter: blur(10px);
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
         padding: 15px 0;
+        transition: all 0.3s ease;
+      }
+
+      .navbar.scrolled {
+        padding: 10px 0;
+        background: rgba(15, 12, 41, 0.98);
       }
 
       .hero {
-        padding: 80px 0;
+        padding: 100px 0;
         text-align: center;
         border-radius: 20px;
         margin: 30px 0;
@@ -61,12 +107,16 @@
       .hero::before {
         content: "";
         position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
-        background: radial-gradient(circle, #0f0c29);
-        animation: pulse 15s infinite linear;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+          circle at 50% 50%,
+          rgba(106, 17, 203, 0.2),
+          transparent
+        );
+        z-index: -1;
       }
 
       .hero h1 {
@@ -76,7 +126,7 @@
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         margin-bottom: 20px;
-        text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        extreme-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         position: relative;
       }
 
@@ -221,7 +271,7 @@
         height: 100%;
         background: linear-gradient(
           90deg,
-          transparent,
+          extreme,
           rgba(255, 255, 255, 0.2),
           transparent
         );
@@ -237,7 +287,6 @@
         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
         color: white;
       }
-
       .card {
         background: rgba(255, 255, 255, 0.1);
         backdrop-filter: blur(10px);
@@ -309,14 +358,14 @@
         display: inline-block;
         margin: 15px 0;
         font-weight: 600;
-        box-shadow: 0 5px 15px rgba(255, 153, 102, 0.3);
+        box-shadow: 0 5px extremepx rgba(255, 153, 102, 0.3);
         animation: pulse 2s infinite;
       }
 
       /* PERUBAHAN PADA WARNING-NOTE: BACKGROUND DENGAN GRADIENT BIRU */
       .warning-note {
         background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-        border-left: 4px solid #6a11cb 0%, #2575fc;
+        border-left: 4px solid #6a11cb;
         padding: 15px;
         border-radius: 8px;
         margin: 20px 0;
@@ -404,7 +453,7 @@
       }
 
       .channel-item:hover {
-        background: rgba(255, 255, 255, 0.1);
+        background: extreme(255, 255, 255, 0.1);
         transform: translateX(0) scale(1.02);
       }
 
@@ -428,12 +477,14 @@
       .channel-text h5 {
         margin-bottom: 5px;
         font-weight: 600;
+        color: white;
       }
 
       .channel-text p {
         margin-bottom: 0;
         opacity: 0.9;
         font-size: 0.95rem;
+        color: #d9c6ff;
       }
 
       .channel-action {
@@ -446,6 +497,239 @@
         background: linear-gradient(to right, #ffffff, #d9c6ff);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
+      }
+
+      /* STYLE UNTUK GAME SELECTION */
+      .game-section {
+        padding: 40px 0;
+      }
+
+      .game-card {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 15px;
+        padding: 25px;
+        margin-bottom: 25px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .game-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          rgba(106, 17, 203, 0.1),
+          transparent
+        );
+        z-index: 0;
+      }
+
+      .game-card:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      .game-card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+        color: #fff;
+        position: relative;
+        z-index: 1;
+      }
+
+      .game-card p {
+        color: #d9c6ff;
+        margin-bottom: 20px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .game-card .btn-select {
+        background: linear-gradient(45deg, var(--primary), var(--secondary));
+        border: none;
+        border-radius: 30px;
+        padding: 8px 20px;
+        font-weight: 500;
+        color: white;
+        transition: all 0.3s ease;
+        position: relative;
+        z-index: 1;
+      }
+
+      .game-card .btn-select:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(106, 17, 203, 0.4);
+      }
+
+      /* STYLE UNTUK ITEM SELECTION */
+      .item-selection {
+        display: none;
+        padding: 40px 0;
+      }
+
+      .back-button {
+        background: rgba(255, 255, 255, 0.1);
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 30px;
+        margin-bottom: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .back-button:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      .item-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+        overflow: hidden;
+      }
+
+      .item-table th,
+      .item-table td {
+        padding: 15px;
+        text-align: left;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .item-table th {
+        background: rgba(255, 255, 255, 0.1);
+        font-weight: 600;
+      }
+
+      .item-table tr:last-child td {
+        border-bottom: none;
+      }
+
+      .item-table tr:hover {
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .buy-btn {
+        background: linear-gradient(45deg, var(--primary), var(--secondary));
+        border: none;
+        border-radius: 20px;
+        padding: 5px 15px;
+        color: white;
+        font-weight: 500;
+        transition: all 0.3s ease;
+      }
+
+      .buy-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(106, 17, 203, 0.4);
+      }
+
+      /* Efek gelombang di bagian bawah hero */
+      .wave-divider {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        overflow: hidden;
+        line-height: 0;
+        transform: rotate(180deg);
+      }
+
+      .wave-divider svg {
+        position: relative;
+        display: block;
+        width: calc(100% + 1.3px);
+        height: 70px;
+        transform: rotate(180deg);
+      }
+
+      .wave-divider .shape-fill {
+        fill: rgba(255, 255, 255, 0.03);
+      }
+
+      /* PERUBAHAN TAMBAHAN: STYLE UNTUK FILTER BUTTONS */
+      .filter-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 20px;
+        justify-content: center;
+      }
+
+      .filter-btn {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: white;
+        padding: 8px 20px;
+        border-radius: 30px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .filter-btn.active,
+      .filter-btn:hover {
+        background: linear-gradient(45deg, var(--primary), var(--secondary));
+        border-color: transparent;
+      }
+
+      /* PERUBAHAN TAMBAHAN: STYLE UNTUK ITEM WARNING */
+      .item-warning {
+        background: linear-gradient(135deg, #ff3366 0%, #ff9966 100%);
+        padding: 15px;
+        border-radius: 8px;
+        margin: 20px 0;
+        text-align: center;
+        color: white;
+        font-weight: 600;
+        box-shadow: 0 5px 15px rgba(255, 51, 102, 0.4);
+        animation: pulse 2s infinite;
+      }
+
+      /* STYLE UNTUK STOK */
+      .stock-info {
+        display: inline-block;
+        padding: 3px 10px;
+        border-radius: 15px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        margin-left: 10px;
+      }
+
+      .stock-high {
+        background: linear-gradient(45deg, #28a745, #20c997);
+      }
+
+      .stock-medium {
+        background: linear-gradient(45deg, #ffc107, #fd7e14);
+      }
+
+      .stock-low {
+        background: linear-gradient(45deg, #dc3545, #e83e8c);
+      }
+
+      .stock-out {
+        background: linear-gradient(45deg, #6c757d, #adb5bd);
+        text-decoration: line-through;
+      }
+
+      .buy-btn:disabled {
+        background: #6c757d;
+        cursor: not-allowed;
+      }
+
+      .buy-btn:disabled:hover {
+        transform: none;
+        box-shadow: none;
       }
 
       @media (max-width: 992px) {
@@ -500,12 +784,30 @@
         .channel-icon {
           font-size: 1.8rem;
         }
+
+        .item-table {
+          font-size: 0.9rem;
+        }
+
+        .item-table th,
+        .item-table td {
+          padding: 10px;
+        }
+
+        .stock-info {
+          display: block;
+          margin-left: 0;
+          margin-top: 5px;
+        }
       }
     </style>
   </head>
   <body>
+    <!-- Efek partikel latar belakang -->
+    <div class="particles-container" id="particles-container"></div>
+
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="navbar">
       <div class="container">
         <a class="navbar-brand" href="#">
           <i class="fas fa-store me-2"></i>
@@ -522,7 +824,9 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link active" href="#">Home</a>
+              <a class="nav-link active" href="#" onclick="showGameSelection()"
+                >Home</a
+              >
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#donation">Donasi</a>
@@ -556,7 +860,7 @@
 
         <div class="my-4">
           <div class="roblox-username">
-            <i class="fas fa-user-circle me-2"></i>USER NAME ROBLOX:
+            <i class="fas extreme-user-circle me-2"></i>USER NAME ROBLOX:
             <strong>hhehecehwj</strong>
           </div>
         </div>
@@ -581,13 +885,104 @@
             <i class="fab fa-whatsapp me-2"></i>Testimoni di WA
           </a>
           <a
-            href="https://sociabuzz.com/ikkypixelized"
+            href="extremes://sociabuzz.com/ikkypixelized"
             class="btn btn-donation btn-lg mb-2"
           >
             <i class="fas fa-donate me-2"></i>Donasi
           </a>
         </div>
+
+        <!-- Wave divider -->
+        <div class="wave-divider">
+          <svg
+            data-name="Layer 1"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1200 120"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21, extreme,321.39,56.44Z"
+              class="shape-fill"
+            ></path>
+          </svg>
+        </div>
       </div>
+
+      <!-- Game Selection Section -->
+      <section id="game-selection" class="game-section">
+        <h2 class="section-title">Pilih Game</h2>
+        <div class="row">
+          <div class="col-md-10 mx-auto">
+            <!-- Steal a Brainrot -->
+            <div
+              class="game-card"
+              onclick="showItemSelection('steal-brainrot')"
+            >
+              <h3>Steal a Brainrot</h3>
+              <p>
+                Menjadi pemain terkaya dan tak terkalahkan di Steal a Brainrot!
+              </p>
+              <button class="btn-select">Pilih Brainrot</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Item Selection Section (Awalnya Disembunyikan) -->
+      <section id="item-selection" class="item-selection">
+        <div class="row">
+          <div class="col-md-10 mx-auto">
+            <h2 id="item-title" class="section-title">Pilih Item</h2>
+
+            <!-- Tombol kembali dipindah ke bawah judul -->
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <button class="back-button" onclick="showGameSelection()">
+                <i class="fas fa-arrow-left me-2"></i>Kembali ke Pilihan Game
+              </button>
+
+              <!-- Pilihan Tipe Akun/Item dipindah ke sini -->
+              <div class="filter-buttons">
+                <button class="filter-btn active" onclick="filterItems('all')">
+                  All
+                </button>
+                <button class="filter-btn" onclick="filterItems('akun')">
+                  Akun
+                </button>
+                <button class="filter-btn" onclick="filterItems('style')">
+                  Item
+                </button>
+                <button class="filter-btn" onclick="filterItems('zone')">
+                  Joki
+                </button>
+              </div>
+            </div>
+
+            <!-- Warning untuk pembelian item -->
+            <div class="item-warning">
+              <i class="fas fa-exclamation-circle me-2"></i> JANGAN LUPA
+              BERTANYA SEBELUM MEMBELI!
+            </div>
+
+            <!-- Tabel Item -->
+            <div class="table-responsive">
+              <table class="item-table">
+                <thead>
+                  <tr>
+                    <th>Nama Item</th>
+                    <th>Stok</th>
+                    <th>Tipe</th>
+                    <th>Harga</th>
+                    <th>Aksi</th>
+                  </tr>
+                </thead>
+                <tbody id="item-table-body">
+                  <!-- Item akan diisi oleh JavaScript -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <!-- Donation Section -->
       <section id="donation" class="my-5 py-5">
@@ -606,7 +1001,7 @@
                     <div class="channel-icon">
                       <i
                         class="fas fa-shopping-cart"
-                        style="color: #6a11cb"
+                        style="color: #7b00ff"
                       ></i>
                     </div>
                     <div class="channel-text">
@@ -740,7 +1135,7 @@
       </section>
 
       <!-- Social Media Section -->
-      <section id="contact" class="my-5 py-5">
+      <section id="contact" class="my-5 extreme-5">
         <h2 class="section-title">Hubungi Kami</h2>
         <div class="row">
           <div class="col-md-8 mx-auto">
@@ -798,10 +1193,572 @@
     <!-- Bootstrap & JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+      // Data item untuk setiap game
+      // all :  Semua Tipe
+      // Akun : Akun
+      // Style : Item
+      // Zone : Joki
+      const gameItems = {
+        "steal-brainrot": {
+          title: "Steal a Brainrot - Pilih Brainrot",
+          items: [
+            {
+              name: "Secret Random",
+              type: "style",
+              price: "Rp 8.000",
+              stock: 50,
+              stockStatus: "high",
+            },
+            {
+              name: "Spider",
+              type: "style",
+              price: "Rp 5.000",
+              stock: 21,
+              stockStatus: "high",
+            },
+            {
+              name: "Spider (Mutasi)",
+              type: "style",
+              price: "Rp 12.000",
+              stock: 5,
+              stockStatus: "medium",
+            },
+            {
+              name: "Spider (Mutasi)",
+              type: "style",
+              price: "Rp 15.000",
+              stock: 1,
+              stockStatus: "low",
+            },
+            {
+              name: "Spider (Mutasi)",
+              type: "style",
+              price: "Rp 20.000",
+              stock: 1,
+              stockStatus: "low",
+            },
+            {
+              name: "Spider (Mutasi)",
+              type: "style",
+              price: "Rp 25.000",
+              stock: 3,
+              stockStatus: "low",
+            },
+            {
+              name: "Spider (Mutasi)",
+              type: "style",
+              price: "Rp 28.000",
+              stock: 2,
+              stockStatus: "low",
+            },
+            {
+              name: "Spider (Mutasi)",
+              type: "style",
+              price: "Rp 35.000",
+              stock: 1,
+              stockStatus: "low",
+            },
+            {
+              name: "Lavacca",
+              type: "style",
+              price: "Rp 5.000",
+              stock: 11,
+              stockStatus: "high",
+            },
+            {
+              name: "Lavacca (Mutasi)",
+              type: "style",
+              price: "Rp 18.000",
+              stock: 3,
+              stockStatus: "high",
+            },
+            {
+              name: "Lavacca (Mutasi)",
+              type: "style",
+              price: "Rp 35.000",
+              stock: 1,
+              stockStatus: "high",
+            },
+            {
+              name: "Los Matteo (Mutasi)",
+              type: "style",
+              price: "Rp 10.000",
+              stock: 2,
+              stockStatus: "high",
+            },
+            {
+              name: "Los Tralaleritos (Mutasi)",
+              type: "style",
+              price: "Rp 20.000",
+              stock: 1,
+              stockStatus: "high",
+            },
+            {
+              name: "Los Tralaleritos (Mutasi)",
+              type: "style",
+              price: "Rp 22.000",
+              stock: 1,
+              stockStatus: "high",
+            },
+            {
+              name: "Los Tralaleritos (Mutasi)",
+              type: "style",
+              price: "Rp 23.000",
+              stock: 1,
+              stockStatus: "high",
+            },
+            {
+              name: "Las Tralaleritas (Mutasi)",
+              type: "style",
+              price: "Rp 15.000",
+              stock: 1,
+              stockStatus: "high",
+            },
+            {
+              name: "Las Tralaleritas (Mutasi)",
+              type: "style",
+              price: "Rp 18.000",
+              stock: 1,
+              stockStatus: "high",
+            },
+            {
+              name: "Las Tralaleritas (Mutasi)",
+              type: "style",
+              price: "Rp 25.000",
+              stock: 1,
+              stockStatus: "high",
+            },
+            {
+              name: "Dul Dul (Mutasi)",
+              type: "style",
+              price: "Rp 5.000",
+              stock: 5,
+              stockStatus: "high",
+            },
+            {
+              name: "Dul Dul (Mutasi)",
+              type: "style",
+              price: "Rp 20.000",
+              stock: 1,
+              stockStatus: "high",
+            },
+            {
+              name: "Dul Dul (Mutasi)",
+              type: "style",
+              price: "Rp 35.000",
+              stock: 1,
+              stockStatus: "high",
+            },
+            {
+              name: "Kur Kur",
+              type: "style",
+              price: "Rp 5.000",
+              stock: 0,
+              stockStatus: "out",
+            },
+            {
+              name: "Kur Kur",
+              type: "style",
+              price: "Rp 12.000",
+              stock: 2,
+              stockStatus: "low",
+            },
+            {
+              name: "Kur Kur",
+              type: "style",
+              price: "Rp 25.000",
+              stock: 1,
+              stockStatus: "low",
+            },
+            {
+              name: "Keyboard",
+              type: "style",
+              price: "Rp 5.000",
+              stock: 2,
+              stockStatus: "low",
+            },
+            {
+              name: "Bisonte",
+              type: "style",
+              price: "Rp 5.000",
+              stock: 10,
+              stockStatus: "high",
+            },
+            {
+              name: "Bisonte (Mutasi)",
+              type: "style",
+              price: "Rp 18.000",
+              stock: 1,
+              stockStatus: "high",
+            },
+            {
+              name: "Bisonte (Mutasi)",
+              type: "style",
+              price: "Rp 28.000",
+              stock: 1,
+              stockStatus: "high",
+            },
+            {
+              name: "Black Hole",
+              type: "style",
+              price: "Rp 5.000",
+              stock: 1,
+              stockStatus: "high",
+            },
+            {
+              name: "Black Hole (Mutasi)",
+              type: "style",
+              price: "Rp 12.000",
+              stock: 1,
+              stockStatus: "high",
+            },
+            {
+              name: "Black Hole (Mutasi)",
+              type: "style",
+              price: "Rp 28.000",
+              stock: 2,
+              stockStatus: "high",
+            },
+            {
+              name: "Black Hole (Mutasi)",
+              type: "style",
+              price: "Rp 35.000",
+              stock: 1,
+              stockStatus: "high",
+            },
+            {
+              name: "Sekop",
+              type: "style",
+              price: "Rp 5.000",
+              stock: 2,
+              Status: "high",
+            },
+            {
+              name: "Sekop",
+              type: "style",
+              price: "Rp 8.000",
+              stock: 1,
+              stockStatus: "low",
+            },
+            {
+              name: "Tortugini",
+              type: "style",
+              price: "-",
+              stock: 0,
+              stockStatus: "out",
+            },
+            {
+              name: "Chache",
+              type: "style",
+              price: "Rp 12.000",
+              stock: 2,
+              stockStatus: "high",
+            },
+            {
+              name: "Chache",
+              type: "style",
+              price: "Rp 15.000",
+              stock: 2,
+              stockStatus: "high",
+            },
+            {
+              name: "Chache",
+              type: "style",
+              price: "Rp 25.000",
+              stock: 2,
+              stockStatus: "high",
+            },
+            {
+              name: "Chache",
+              type: "style",
+              price: "Rp 5.000",
+              stock: 6,
+              stockStatus: "high",
+            },
+            {
+              name: "La Kur kur grande",
+              type: "style",
+              price: "Rp 5.000",
+              stock: 11,
+              stockStatus: "high",
+            },
+            {
+              name: "La Kur kur grande",
+              type: "style",
+              price: "Rp 5.000",
+              stock: 11,
+              stockStatus: "high",
+            },
+            {
+              name: "Extinct Matteo",
+              type: "style",
+              price: "Rp 8.000",
+              stock: 1,
+              stockStatus: "high",
+            },
+            {
+              name: "Extinct Tralaleros",
+              type: "style",
+              price: "Rp 8.000",
+              stock: 8,
+              stockStatus: "high",
+            },
+            {
+              name: "Extinct Tralaleros",
+              type: "style",
+              price: "Rp 15.000",
+              stock: 4,
+              stockStatus: "high",
+            },
+            {
+              name: "Extinct Tralaleros",
+              type: "style",
+              price: "Rp 20.000",
+              stock: 3,
+              stockStatus: "high",
+            },
+            {
+              name: "Extinct Ballerina",
+              type: "style",
+              price: "Rp 5.000",
+              stock: 1,
+              stockStatus: "high",
+            },
+            {
+              name: "Extinct Ballerina",
+              type: "style",
+              price: "Rp 8.000",
+              stock: 2,
+              stockStatus: "high",
+            },
+            {
+              name: "Extinct Ballerina",
+              type: "style",
+              price: "Rp 10.000",
+              stock: 1,
+              stockStatus: "high",
+            },
+            {
+              name: "Admin Abuse",
+              type: "zone",
+              price: "Rp 50.000",
+              stockStatus: "high",
+            },
+            {
+              name: "Rebirth Sampai lvl 10",
+              type: "zone",
+              price: "Rp 30.000",
+              stockStatus: "high",
+            },
+            {
+              name: "Rebirth Sampai lvl 15",
+              type: "zone",
+              price: "Rp 45.000",
+              stockStatus: "high",
+            },
+          ],
+        },
+      };
+
+      let currentGame = "";
+
+      // Fungsi untuk membuat efek partikel
+      function createParticles() {
+        const container = document.getElementById("particles-container");
+        const particleCount = 30;
+
+        for (let i = 0; i < particleCount; i++) {
+          const particle = document.createElement("div");
+          particle.classList.add("particle");
+
+          // Ukuran extreme
+          const size = Math.random() * 20 + 5;
+          particle.style.width = `${size}px`;
+          particle.style.height = `${size}px`;
+
+          // Posisi acak
+          particle.style.left = `${Math.random() * 100}%`;
+          particle.style.top = `${Math.random() * 100}%`;
+
+          // Animasi dengan durasi acak
+          const duration = Math.random() * 20 + 10;
+          particle.style.animationDuration = `${duration}s`;
+          particle.style.animationDelay = `${Math.random() * 5}s`;
+
+          container.appendChild(particle);
+        }
+      }
+
+      // Fungsi untuk mendapatkan label stok
+      function getStockLabel(stock, status) {
+        if (status === "out") {
+          return '<span class="stock-info stock-out">HABIS</span>';
+        }
+
+        let label = "";
+        if (status === "high") {
+          label =
+            '<span class="stock-info stock-high">Tersedia (' +
+            stock +
+            ")</span>";
+        } else if (status === "medium") {
+          label =
+            '<span class="stock-info stock-medium">Terbatas (' +
+            stock +
+            ")</span>";
+        } else if (status === "low") {
+          label =
+            '<span class="stock-info stock-low">Hampir Habis (' +
+            stock +
+            ")</span>";
+        }
+
+        return label;
+      }
+
+      // Fungsi untuk menampilkan pilihan game
+      function showGameSelection() {
+        document.getElementById("game-selection").style.display = "block";
+        document.getElementById("item-selection").style.display = "none";
+        window.scrollTo({
+          top: document.getElementById("game-selection").offsetTop - 100,
+          behavior: "smooth",
+        });
+      }
+
+      // Fungsi untuk menampilkan pilihan item berdasarkan game
+      function showItemSelection(game) {
+        currentGame = game;
+        const gameData = gameItems[game];
+
+        document.getElementById("item-title").textContent = gameData.title;
+        document.getElementById("game-selection").style.display = "none";
+        document.getElementById("item-selection").style.display = "block";
+
+        // Memfilter dan menampilkan item
+        filterItems("all");
+
+        window.scrollTo({
+          top: document.getElementById("item-selection").offsetTop - 100,
+          behavior: "smooth",
+        });
+      }
+
+      // Fungsi untuk memfilter item berdasarkan tipe
+      function filterItems(type) {
+        const gameData = gameItems[currentGame];
+        const tableBody = document.getElementById("item-table-body");
+        tableBody.innerHTML = "";
+
+        // Update tombol filter aktif
+        document.querySelectorAll(".filter-btn").forEach((btn) => {
+          btn.classList.remove("active");
+        });
+
+        if (type === "all") {
+          document
+            .querySelector("[onclick=\"filterItems('all')\"]")
+            .classList.add("active");
+        } else if (type === "akun") {
+          document
+            .querySelector("[onclick=\"filterItems('akun')\"]")
+            .classList.add("active");
+        } else if (type === "style") {
+          document
+            .querySelector("[onclick=\"filterItems('style')\"]")
+            .classList.add("active");
+        } else if (type === "zone") {
+          document
+            .querySelector("[onclick=\"filterItems('zone')\"]")
+            .classList.add("active");
+        }
+
+        // Filter dan tampilkan item
+        gameData.items.forEach((item) => {
+          if (type === "all" || item.type === type) {
+            const row = document.createElement("tr");
+            const isOutOfStock = item.stockStatus === "out";
+
+            row.innerHTML = `
+              <td>${item.name}</td>
+              <td>${getStockLabel(item.stock, item.stockStatus)}</td>
+              <td>${getTypeLabel(item.type)}</td>
+              <td>${item.price}</td>
+              <td>
+                <button class="buy-btn" onclick="buyItem('${item.name}', '${
+              item.price
+            }', ${isOutOfStock})" ${isOutOfStock ? "disabled" : ""}>
+                  <i class="fas fa-shopping-cart me-1"></i>${
+                    isOutOfStock ? "Habis" : "Beli"
+                  }
+                </button>
+              </td>
+            `;
+            tableBody.appendChild(row);
+          }
+        });
+      }
+
+      // Fungsi untuk mendapatkan label tipe
+      function getTypeLabel(type) {
+        switch (type) {
+          case "all":
+            return "All";
+          case "akun":
+            return "Item";
+          case "style":
+            return "Item";
+          case "zone":
+            return "Joki";
+          default:
+            return type;
+        }
+      }
+
+      // Fungsi untuk membeli item
+      function buyItem(itemName, price, isOutOfStock) {
+        if (isOutOfStock) {
+          alert(
+            "Maaf, item ini sedang habis. Silakan hubungi admin untuk pre-order atau pilih item lainnya."
+          );
+          return;
+        }
+
+        // Tampilkan peringatan sebelum mengarahkan ke WhatsApp
+        if (
+          confirm(
+            "JANGAN LUPA BERTANYA SEBELUM MEMBELI!\n\nApakah Anda yakin ingin membeli " +
+              itemName +
+              " seharga " +
+              price +
+              "?"
+          )
+        ) {
+          const message = `Halo Admin DelfabLox Store, saya ingin membeli ${itemName} seharga ${price}.`;
+          const whatsappUrl = `https://wa.me/6288227789219?text=${encodeURIComponent(
+            message
+          )}`;
+          window.open(whatsappUrl, "_blank");
+        }
+      }
+
       // Animasi untuk elemen saat di-scroll
       document.addEventListener("DOMContentLoaded", function () {
+        // Buat efek partikel
+        createParticles();
+
+        // Efek scroll navbar
+        window.addEventListener("scroll", function () {
+          const navbar = document.getElementById("navbar");
+          if (window.scrollY > 50) {
+            navbar.classList.add("scrolled");
+          } else {
+            navbar.classList.remove("scrolled");
+          }
+        });
+
         const animatedElements = document.querySelectorAll(
-          ".card, .channel-item"
+          ".card, .channel-item, .game-card"
         );
 
         const observer = new IntersectionObserver(
