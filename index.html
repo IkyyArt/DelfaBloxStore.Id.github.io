@@ -2,7 +2,10 @@
 <html lang="id">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
     <title>DelfabLox Store</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
@@ -23,17 +26,21 @@
         --accent: #ff3366;
         --dark: #1a1a2e;
         --light: #f8f9fa;
-        --background: #0f0c29; /* Warna background solid */
-        --testimonial: #13b713; /* Warna baru untuk testimoni */
+        --background: #0f0c29;
+        --testimonial: #13b713;
       }
 
-      /* PERUBAHAN PADA BODY DAN BACKGROUND */
+      * {
+        box-sizing: border-box;
+      }
+
       html,
       body {
         height: 100%;
         margin: 0;
         padding: 0;
         scroll-behavior: smooth;
+        overflow-x: hidden;
       }
 
       body {
@@ -41,9 +48,10 @@
         background-color: var(--background);
         color: white;
         min-height: 100vh;
-        padding-top: 80px;
+        padding-top: 70px;
         position: relative;
-        overflow-x: hidden;
+        font-size: 14px;
+        line-height: 1.5;
       }
 
       /* Efek partikel latar belakang */
@@ -81,27 +89,46 @@
         }
       }
 
+      /* Navbar */
       .navbar {
         background: rgba(26, 26, 46, 0.95);
         backdrop-filter: blur(10px);
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-        padding: 15px 0;
+        padding: 12px 0;
         transition: all 0.3s ease;
       }
 
       .navbar.scrolled {
-        padding: 10px 0;
+        padding: 8px 0;
         background: rgba(15, 12, 41, 0.98);
       }
 
+      .navbar-brand {
+        font-size: 1.1rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 200px;
+      }
+
+      .navbar-toggler {
+        border: none;
+        padding: 4px 8px;
+      }
+
+      .navbar-toggler:focus {
+        box-shadow: none;
+      }
+
+      /* Hero section */
       .hero {
-        padding: 100px 0;
+        padding: 40px 0 70px;
         text-align: center;
-        border-radius: 20px;
-        margin: 30px 0;
+        margin: 15px 0;
         animation: fadeIn 1.5s ease;
         position: relative;
         overflow: hidden;
+        width: 100%;
       }
 
       .hero::before {
@@ -120,111 +147,65 @@
       }
 
       .hero h1 {
-        font-size: 3.5rem;
+        font-size: 2rem;
         font-weight: 700;
         background: linear-gradient(to right, #ffffff, #d9c6ff);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        margin-bottom: 20px;
-        extreme-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        position: relative;
+        margin-bottom: 15px;
+        text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        padding: 0 10px;
+        word-wrap: break-word;
       }
 
       .hero p {
-        font-size: 1.2rem;
-        max-width: 700px;
-        margin: 0 auto 30px;
+        font-size: 0.95rem;
+        max-width: 100%;
+        margin: 0 auto 20px;
+        padding: 0 15px;
+      }
+
+      /* Tombol */
+      .btn-custom {
+        border: none;
+        border-radius: 50px;
+        padding: 12px 20px;
+        font-weight: 600;
+        transition: all 0.3s ease;
         position: relative;
+        overflow: hidden;
+        font-size: 0.95rem;
+        margin: 6px;
+        display: inline-block;
+        text-align: center;
+        min-width: 140px;
+        color: white; /* Semua tombol sekarang memiliki teks putih */
       }
 
       .btn-primary {
         background: linear-gradient(45deg, var(--primary), var(--secondary));
-        border: none;
-        border-radius: 50px;
-        padding: 12px 30px;
-        font-weight: 600;
-        transition: all 0.3s ease;
         box-shadow: 0 4px 15px rgba(106, 17, 203, 0.4);
-        position: relative;
-        overflow: hidden;
-      }
-
-      .btn-primary::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(255, 255, 255, 0.2),
-          transparent
-        );
-        transition: 0.5s;
-      }
-
-      .btn-primary:hover::before {
-        left: 100%;
-      }
-
-      .btn-primary:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 25px rgba(106, 17, 203, 0.6);
       }
 
       .btn-whatsapp {
         background: linear-gradient(45deg, #25d366, #128c7e);
-        color: white;
-        border-radius: 50px;
-        padding: 12px 30px;
-        font-weight: 600;
-        transition: all 0.3s ease;
         box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-        position: relative;
-        overflow: hidden;
-      }
-
-      .btn-whatsapp::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(255, 255, 255, 0.2),
-          transparent
-        );
-        transition: 0.5s;
-      }
-
-      .btn-whatsapp:hover::before {
-        left: 100%;
-      }
-
-      .btn-whatsapp:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
-        color: white;
+        color: white; /* Teks putih untuk WhatsApp */
       }
 
       .btn-donation {
         background: linear-gradient(45deg, #ff3366, #ff3366);
-        color: white;
-        border-radius: 50px;
-        padding: 12px 30px;
-        font-weight: 600;
-        transition: all 0.3s ease;
         box-shadow: 0 4px 15px rgba(255, 51, 102, 0.4);
-        position: relative;
-        overflow: hidden;
+        color: white; /* Teks putih untuk Donasi */
       }
 
-      .btn-donation::before {
+      .btn-tiktok {
+        background: linear-gradient(45deg, #000000, #25f4ee, #fe2c55);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        color: white; /* Teks putih untuk TikTok */
+      }
+
+      .btn-custom::before {
         content: "";
         position: absolute;
         top: 0;
@@ -240,96 +221,353 @@
         transition: 0.5s;
       }
 
-      .btn-donation:hover::before {
+      .btn-custom:hover::before {
         left: 100%;
+      }
+
+      .btn-custom:hover {
+        transform: translateY(-3px);
+        color: white; /* Pastikan teks tetap putih saat hover */
+      }
+
+      .btn-primary:hover {
+        box-shadow: 0 8px 25px rgba(106, 17, 203, 0.6);
+      }
+
+      .btn-whatsapp:hover {
+        box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
       }
 
       .btn-donation:hover {
-        transform: translateY(-3px);
         box-shadow: 0 8px 25px rgba(255, 51, 102, 0.6);
-        color: white;
-      }
-
-      .btn-tiktok {
-        background: linear-gradient(45deg, #000000, #25f4ee, #fe2c55);
-        color: white;
-        border-radius: 50px;
-        padding: 12px 30px;
-        font-weight: 600;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-        position: relative;
-        overflow: hidden;
-      }
-
-      .btn-tiktok::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          90deg,
-          extreme,
-          rgba(255, 255, 255, 0.2),
-          transparent
-        );
-        transition: 0.5s;
-      }
-
-      .btn-tiktok:hover::before {
-        left: 100%;
       }
 
       .btn-tiktok:hover {
-        transform: translateY(-3px);
         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
-        color: white;
       }
+
+      /* Card */
       .card {
         background: rgba(255, 255, 255, 0.1);
         backdrop-filter: blur(10px);
-        border-radius: 16px;
+        border-radius: 12px;
         border: 1px solid rgba(255, 255, 255, 0.2);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         color: white;
-        margin-bottom: 20px;
+        margin-bottom: 15px;
         overflow: hidden;
+        width: 100%;
       }
 
       .card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
       }
 
+      /* Section title */
       .section-title {
         text-align: center;
-        margin: 60px 0 40px;
-        font-size: 2.5rem;
+        margin: 40px 0 25px;
+        font-size: 1.8rem;
         font-weight: 700;
         background: linear-gradient(to right, #ffffff, #d9c6ff);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         position: relative;
+        padding: 0 15px;
+        word-wrap: break-word;
       }
 
       .section-title::after {
         content: "";
         position: absolute;
-        bottom: -15px;
+        bottom: -10px;
         left: 50%;
         transform: translateX(-50%);
-        width: 100px;
-        height: 4px;
+        width: 70px;
+        height: 3px;
         background: linear-gradient(to right, #ffffff, #d9c6ff);
         border-radius: 2px;
       }
 
-      .social-icon {
+      /* Channel item */
+      .channel-item {
+        padding: 18px 15px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.05);
+        margin: 12px 0;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+      }
+
+      .channel-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 15px;
+      }
+
+      .channel-icon {
         font-size: 2rem;
-        margin: 0 15px;
+        margin-bottom: 12px;
+      }
+
+      .channel-text {
+        width: 100%;
+      }
+
+      .channel-text h5 {
+        margin-bottom: 5px;
+        font-weight: 600;
         color: white;
+        font-size: 1.1rem;
+      }
+
+      .channel-text p {
+        margin-bottom: 0;
+        opacity: 0.9;
+        font-size: 0.9rem;
+        color: #d9c6ff;
+      }
+
+      .channel-action {
+        width: 100%;
+        text-align: center;
+      }
+
+      /* Game card */
+      .game-card {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+      }
+
+      .game-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          rgba(106, 17, 203, 0.1),
+          transparent
+        );
+        z-index: 0;
+      }
+
+      .game-card:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .game-card h3 {
+        font-size: 1.3rem;
+        margin-bottom: 12px;
+        color: #fff;
+        position: relative;
+        z-index: 1;
+        color: white; /* Teks putih untuk judul game card */
+      }
+
+      .game-card p {
+        color: #d9c6ff;
+        margin-bottom: 15px;
+        position: relative;
+        z-index: 1;
+        font-size: 0.9rem;
+      }
+
+      .game-card .btn-select {
+        background: linear-gradient(45deg, var(--primary), var(--secondary));
+        border: none;
+        border-radius: 25px;
+        padding: 8px 18px;
+        font-weight: 500;
+        color: white; /* Teks putih untuk tombol pilih */
+        transition: all 0.3s ease;
+        position: relative;
+        z-index: 1;
+        font-size: 0.9rem;
+      }
+
+      .game-card .btn-select:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(106, 17, 203, 0.4);
+      }
+
+      /* PERBAIKAN BESAR: Tabel item untuk mobile */
+      .item-table-container {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin: 15px 0;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.05);
+        display: block;
+        position: relative;
+      }
+
+      .item-table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 600px;
+      }
+
+      .item-table th,
+      .item-table td {
+        padding: 12px 10px;
+        text-align: left;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        font-size: 0.85rem;
+      }
+
+      .item-table th {
+        background: rgba(255, 255, 255, 0.1);
+        font-weight: 600;
+        white-space: nowrap;
+      }
+
+      .item-table tr:last-child td {
+        border-bottom: none;
+        color: white; /* Teks putih untuk sel tabel */
+      }
+
+      .item-table tr:hover {
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .buy-btn {
+        background: linear-gradient(45deg, var(--primary), var(--secondary));
+        border: none;
+        border-radius: 18px;
+        padding: 6px 12px;
+        color: white; /* Teks putih untuk tombol beli */
+        font-weight: 500;
+        transition: all 0.3s ease;
+        font-size: 0.8rem;
+        white-space: nowrap;
+        min-width: 70px;
+      }
+
+      .buy-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(106, 17, 203, 0.4);
+      }
+
+      /* Filter buttons */
+      .filter-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 15px;
+        justify-content: center;
+      }
+
+      .filter-btn {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: white; /* Teks putih untuk tombol filter */
+        padding: 8px 16px;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        font-size: 0.85rem;
+        min-height: 38px;
+      }
+
+      .filter-btn.active,
+      .filter-btn:hover {
+        background: linear-gradient(45deg, var(--primary), var(--secondary));
+        border-color: transparent;
+      }
+
+      /* Back button */
+      .back-button {
+        background: rgba(255, 255, 255, 0.1);
+        border: none;
+        color: white; /* Teks putih untuk tombol kembali */
+        padding: 10px 18px;
+        border-radius: 25px;
+        margin-bottom: 15px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+      }
+
+      .back-button:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      /* Roblox username */
+      .roblox-username {
+        background: linear-gradient(45deg, #ff3333, #ff9966);
+        padding: 10px 15px;
+        border-radius: 25px;
+        display: inline-block;
+        margin: 12px 0;
+        font-weight: 600;
+        box-shadow: 0 5px 15px rgba(255, 153, 102, 0.3);
+        animation: pulse 2s infinite;
+        font-size: 0.9rem;
+        text-align: center;
+        max-width: 100%;
+        word-wrap: break-word;
+        color: white; /* Teks putih untuk username */
+      }
+
+      /* Warning note */
+      .warning-note,
+      .item-warning {
+        padding: 12px 15px;
+        border-radius: 8px;
+        margin: 15px 0;
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        text-align: center;
+        color: white; /* Teks putih untuk peringatan */
+        font-weight: 600;
+        font-size: 0.9rem;
+        word-wrap: break-word;
+      }
+
+      .warning-note {
+        background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+        border-left: 4px solid #6a11cb;
+        box-shadow: 0 5px 15px rgba(37, 117, 252, 0.4);
+      }
+
+      .item-warning {
+        background: linear-gradient(135deg, #ff3366 0%, #ff9966 100%);
+        box-shadow: 0 5px 15px rgba(255, 51, 102, 0.4);
+        animation: pulse 2s infinite;
+      }
+
+      /* Social icons */
+      .social-icon {
+        font-size: 1.8rem;
+        margin: 0 12px 15px;
+        color: white; /* Ikon sosial media putih */
         transition: all 0.3s ease;
         display: inline-block;
       }
@@ -339,59 +577,26 @@
         color: var(--accent);
       }
 
+      /* Footer */
       footer {
         background: rgba(26, 26, 46, 0.9);
-        padding: 30px 0;
-        margin-top: 60px;
+        padding: 25px 0;
+        margin-top: 50px;
         text-align: center;
         position: relative;
+        font-size: 0.85rem;
       }
 
+      footer p {
+        margin-bottom: 8px;
+        padding: 0 10px;
+        word-wrap: break-word;
+        color: white; /* Teks putih untuk footer */
+      }
+
+      /* Animasi */
       .floating {
         animation: float 3s ease-in-out infinite;
-      }
-
-      .roblox-username {
-        background: linear-gradient(45deg, #ff3333, #ff9966);
-        padding: 10px 20px;
-        border-radius: 30px;
-        display: inline-block;
-        margin: 15px 0;
-        font-weight: 600;
-        box-shadow: 0 5px extremepx rgba(255, 153, 102, 0.3);
-        animation: pulse 2s infinite;
-      }
-
-      /* PERUBAHAN PADA WARNING-NOTE: BACKGROUND DENGAN GRADIENT BIRU */
-      .warning-note {
-        background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-        border-left: 4px solid #6a11cb;
-        padding: 15px;
-        border-radius: 8px;
-        margin: 20px 0;
-        position: relative;
-        overflow: hidden;
-        width: 100%;
-        text-align: center;
-        color: white;
-        font-weight: 600;
-        box-shadow: 0 5px 15px rgba(37, 117, 252, 0.4);
-      }
-
-      .warning-note::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(255, 255, 255, 0.2),
-          transparent
-        );
-        animation: shine 3s infinite;
       }
 
       @keyframes float {
@@ -399,7 +604,7 @@
           transform: translateY(0px);
         }
         50% {
-          transform: translateY(-15px);
+          transform: translateY(-12px);
         }
         100% {
           transform: translateY(0px);
@@ -438,271 +643,15 @@
         }
       }
 
-      /* PERUBAHAN PADA CHANNEL ITEM - LEBIH HORIZONTAL */
-      .channel-item {
-        padding: 25px;
-        border-radius: 15px;
-        background: rgba(255, 255, 255, 0.05);
-        margin: 15px 0;
-        transition: all 0.3s ease;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 100%;
-      }
-
-      .channel-item:hover {
-        background: extreme(255, 255, 255, 0.1);
-        transform: translateX(0) scale(1.02);
-      }
-
-      .channel-content {
-        display: flex;
-        align-items: center;
-        flex: 1;
-      }
-
-      .channel-icon {
-        font-size: 2.2rem;
-        margin-right: 20px;
-        min-width: 50px;
-        text-align: center;
-      }
-
-      .channel-text {
-        flex: 1;
-      }
-
-      .channel-text h5 {
-        margin-bottom: 5px;
-        font-weight: 600;
-        color: white;
-      }
-
-      .channel-text p {
-        margin-bottom: 0;
-        opacity: 0.9;
-        font-size: 0.95rem;
-        color: #d9c6ff;
-      }
-
-      .channel-action {
-        margin-left: 20px;
-      }
-
-      .logo-text {
-        font-size: 2rem;
-        font-weight: 700;
-        background: linear-gradient(to right, #ffffff, #d9c6ff);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-
-      /* STYLE UNTUK GAME SELECTION */
-      .game-section {
-        padding: 40px 0;
-      }
-
-      .game-card {
-        background: rgba(255, 255, 255, 0.05);
-        border-radius: 15px;
-        padding: 25px;
-        margin-bottom: 25px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        transition: all 0.3s ease;
-        cursor: pointer;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .game-card::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          135deg,
-          rgba(106, 17, 203, 0.1),
-          transparent
-        );
-        z-index: 0;
-      }
-
-      .game-card:hover {
-        background: rgba(255, 255, 255, 0.1);
-        transform: translateY(-5px);
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-      }
-
-      .game-card h3 {
-        font-size: 1.5rem;
-        margin-bottom: 15px;
-        color: #fff;
-        position: relative;
-        z-index: 1;
-      }
-
-      .game-card p {
-        color: #d9c6ff;
-        margin-bottom: 20px;
-        position: relative;
-        z-index: 1;
-      }
-
-      .game-card .btn-select {
-        background: linear-gradient(45deg, var(--primary), var(--secondary));
-        border: none;
-        border-radius: 30px;
-        padding: 8px 20px;
-        font-weight: 500;
-        color: white;
-        transition: all 0.3s ease;
-        position: relative;
-        z-index: 1;
-      }
-
-      .game-card .btn-select:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 5px 15px rgba(106, 17, 203, 0.4);
-      }
-
-      /* STYLE UNTUK ITEM SELECTION */
-      .item-selection {
-        display: none;
-        padding: 40px 0;
-      }
-
-      .back-button {
-        background: rgba(255, 255, 255, 0.1);
-        border: none;
-        color: white;
-        padding: 10px 20px;
-        border-radius: 30px;
-        margin-bottom: 20px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-      }
-
-      .back-button:hover {
-        background: rgba(255, 255, 255, 0.2);
-      }
-
-      .item-table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 20px;
-        background: rgba(255, 255, 255, 0.05);
-        border-radius: 10px;
-        overflow: hidden;
-      }
-
-      .item-table th,
-      .item-table td {
-        padding: 15px;
-        text-align: left;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      }
-
-      .item-table th {
-        background: rgba(255, 255, 255, 0.1);
-        font-weight: 600;
-      }
-
-      .item-table tr:last-child td {
-        border-bottom: none;
-      }
-
-      .item-table tr:hover {
-        background: rgba(255, 255, 255, 0.08);
-      }
-
-      .buy-btn {
-        background: linear-gradient(45deg, var(--primary), var(--secondary));
-        border: none;
-        border-radius: 20px;
-        padding: 5px 15px;
-        color: white;
-        font-weight: 500;
-        transition: all 0.3s ease;
-      }
-
-      .buy-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(106, 17, 203, 0.4);
-      }
-
-      /* Efek gelombang di bagian bawah hero */
-      .wave-divider {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        overflow: hidden;
-        line-height: 0;
-        transform: rotate(180deg);
-      }
-
-      .wave-divider svg {
-        position: relative;
-        display: block;
-        width: calc(100% + 1.3px);
-        height: 70px;
-        transform: rotate(180deg);
-      }
-
-      .wave-divider .shape-fill {
-        fill: rgba(255, 255, 255, 0.03);
-      }
-
-      /* PERUBAHAN TAMBAHAN: STYLE UNTUK FILTER BUTTONS */
-      .filter-buttons {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin-bottom: 20px;
-        justify-content: center;
-      }
-
-      .filter-btn {
-        background: rgba(255, 255, 255, 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        color: white;
-        padding: 8px 20px;
-        border-radius: 30px;
-        transition: all 0.3s ease;
-        cursor: pointer;
-      }
-
-      .filter-btn.active,
-      .filter-btn:hover {
-        background: linear-gradient(45deg, var(--primary), var(--secondary));
-        border-color: transparent;
-      }
-
-      /* PERUBAHAN TAMBAHAN: STYLE UNTUK ITEM WARNING */
-      .item-warning {
-        background: linear-gradient(135deg, #ff3366 0%, #ff9966 100%);
-        padding: 15px;
-        border-radius: 8px;
-        margin: 20px 0;
-        text-align: center;
-        color: white;
-        font-weight: 600;
-        box-shadow: 0 5px 15px rgba(255, 51, 102, 0.4);
-        animation: pulse 2s infinite;
-      }
-
-      /* STYLE UNTUK STOK */
+      /* Style untuk stok */
       .stock-info {
         display: inline-block;
-        padding: 3px 10px;
-        border-radius: 15px;
-        font-size: 0.8rem;
+        padding: 3px 8px;
+        border-radius: 12px;
+        font-size: 0.75rem;
         font-weight: 600;
-        margin-left: 10px;
+        margin-left: 5px;
+        color: white; /* Teks putih untuk info stok */
       }
 
       .stock-high {
@@ -732,72 +681,209 @@
         box-shadow: none;
       }
 
-      @media (max-width: 992px) {
-        .channel-item {
-          flex-direction: column;
-          text-align: center;
-          padding: 20px;
-        }
-
-        .channel-content {
-          flex-direction: column;
-          margin-bottom: 15px;
-        }
-
-        .channel-icon {
-          margin-right: 0;
-          margin-bottom: 15px;
-        }
-
-        .channel-action {
-          margin-left: 0;
-          margin-top: 15px;
-        }
+      /* Wave divider */
+      .wave-divider {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        overflow: hidden;
+        line-height: 0;
+        transform: rotate(180deg);
       }
 
-      @media (max-width: 768px) {
+      .wave-divider svg {
+        position: relative;
+        display: block;
+        width: calc(100% + 1.3px);
+        height: 50px;
+        transform: rotate(180deg);
+      }
+
+      .wave-divider .shape-fill {
+        fill: rgba(255, 255, 255, 0.03);
+      }
+
+      /* Utility classes */
+      .text-wrap-balance {
+        text-wrap: balance;
+      }
+
+      /* Container fixes */
+      .container {
+        padding-left: 15px;
+        padding-right: 15px;
+        max-width: 100%;
+        overflow: hidden;
+      }
+
+      .main-container {
+        width: 100%;
+        overflow: hidden;
+      }
+
+      /* Hide elements initially for animation */
+      .card,
+      .channel-item,
+      .game-card {
+        opacity: 0;
+      }
+
+      /* Media queries untuk tablet dan desktop */
+      @media (min-width: 576px) {
+        body {
+          font-size: 15px;
+          padding-top: 75px;
+        }
+
+        .hero {
+          padding: 60px 0 90px;
+        }
+
         .hero h1 {
-          font-size: 2.5rem;
-        }
-
-        .hero p {
-          font-size: 1rem;
-        }
-
-        .btn-primary,
-        .btn-whatsapp,
-        .btn-donation,
-        .btn-tiktok {
-          padding: 10px 20px;
-          font-size: 0.9rem;
-          margin: 5px 0;
+          font-size: 2.4rem;
         }
 
         .section-title {
           font-size: 2rem;
+          margin: 45px 0 30px;
+        }
+
+        .btn-custom {
+          min-width: 160px;
+          padding: 12px 25px;
+        }
+
+        .back-button {
+          width: auto;
+        }
+      }
+
+      @media (min-width: 768px) {
+        body {
+          font-size: 16px;
+          padding-top: 80px;
+        }
+
+        .hero {
+          padding: 80px 0 110px;
+        }
+
+        .hero h1 {
+          font-size: 2.8rem;
+        }
+
+        .hero p {
+          font-size: 1.1rem;
+          max-width: 700px;
+        }
+
+        .section-title {
+          font-size: 2.3rem;
+          margin: 50px 0 35px;
         }
 
         .channel-item {
-          padding: 15px;
+          flex-direction: row;
+          text-align: left;
+          padding: 20px;
+        }
+
+        .channel-content {
+          flex-direction: row;
+          margin-bottom: 0;
         }
 
         .channel-icon {
-          font-size: 1.8rem;
+          margin-right: 15px;
+          margin-bottom: 0;
         }
 
-        .item-table {
-          font-size: 0.9rem;
+        .channel-action {
+          width: auto;
+          text-align: right;
+        }
+
+        .filter-buttons {
+          justify-content: flex-start;
+        }
+      }
+
+      @media (min-width: 992px) {
+        .hero h1 {
+          font-size: 3.2rem;
+        }
+
+        .section-title {
+          font-size: 2.5rem;
+          margin: 60px 0 40px;
+        }
+
+        .channel-item {
+          padding: 25px;
+        }
+
+        .game-card {
+          padding: 25px;
+        }
+
+        .game-card h3 {
+          font-size: 1.5rem;
         }
 
         .item-table th,
         .item-table td {
-          padding: 10px;
+          padding: 15px;
+          font-size: 0.9rem;
         }
 
-        .stock-info {
-          display: block;
-          margin-left: 0;
-          margin-top: 5px;
+        .container {
+          max-width: 960px;
+        }
+      }
+
+      @media (max-width: 400px) {
+        .hero h1 {
+          font-size: 1.8rem;
+        }
+
+        .section-title {
+          font-size: 1.6rem;
+        }
+
+        .btn-custom {
+          min-width: 120px;
+          padding: 10px 15px;
+          font-size: 0.85rem;
+          margin: 4px;
+        }
+
+        .filter-btn {
+          padding: 6px 12px;
+          font-size: 0.8rem;
+          min-height: 34px;
+        }
+
+        .navbar-brand {
+          font-size: 1rem;
+          max-width: 160px;
+        }
+      }
+
+      /* Very small devices */
+      @media (max-width: 340px) {
+        .hero h1 {
+          font-size: 1.6rem;
+        }
+
+        .btn-custom {
+          min-width: 110px;
+          padding: 8px 12px;
+          font-size: 0.8rem;
+        }
+
+        .section-title {
+          font-size: 1.4rem;
         }
       }
     </style>
@@ -818,6 +904,9 @@
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -844,7 +933,7 @@
       <div class="hero">
         <div class="floating">
           <i
-            class="fas fa-store fa-4x mb-4"
+            class="fas fa-store fa-3x mb-3"
             style="
               background: linear-gradient(to right, #ffffff, #d9c6ff);
               -webkit-background-clip: text;
@@ -858,35 +947,35 @@
           terbaik dan proses cepat!
         </p>
 
-        <div class="my-4">
+        <div class="my-3">
           <div class="roblox-username">
-            <i class="fas extreme-user-circle me-2"></i>USER NAME ROBLOX:
+            <i class="fas fa-user-circle me-2"></i>USER NAME ROBLOX:
             <strong>hhehecehwj</strong>
           </div>
         </div>
 
-        <!-- Kotak peringatan yang sudah diubah backgroundnya -->
+        <!-- Kotak peringatan -->
         <div class="warning-note">
           <i class="fas fa-exclamation-circle me-2"></i> SELAIN ITU CLONE!
           JANGAN LUPA BERTANYA SEBELUM MEMBELI!
         </div>
 
-        <div class="mt-5">
+        <div class="mt-4 d-flex flex-wrap justify-content-center">
           <a
             href="https://sociabuzz.com/delfabloxstore"
-            class="btn btn-primary btn-lg me-3 mb-2"
+            class="btn btn-primary btn-custom"
           >
             <i class="fas fa-shopping-cart me-2"></i>Beli Sekarang
           </a>
           <a
             href="https://whatsapp.com/channel/0029Vb6A7jlHLHQZQBQ1Vf2C"
-            class="btn btn-whatsapp btn-lg me-3 mb-2"
+            class="btn btn-whatsapp btn-custom"
           >
             <i class="fab fa-whatsapp me-2"></i>Testimoni di WA
           </a>
           <a
             href="https://sociabuzz.com/ikkypixelized"
-            class="btn btn-donation btn-lg mb-2"
+            class="btn btn-donation btn-custom"
           >
             <i class="fas fa-donate me-2"></i>Donasi
           </a>
@@ -901,7 +990,7 @@
             preserveAspectRatio="none"
           >
             <path
-              d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21, extreme,321.39,56.44Z"
+              d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
               class="shape-fill"
             ></path>
           </svg>
@@ -912,7 +1001,7 @@
       <section id="game-selection" class="game-section">
         <h2 class="section-title">Pilih Game</h2>
         <div class="row">
-          <div class="col-md-10 mx-auto">
+          <div class="col-12">
             <!-- Steal a Brainrot -->
             <div
               class="game-card"
@@ -929,18 +1018,23 @@
       </section>
 
       <!-- Item Selection Section (Awalnya Disembunyikan) -->
-      <section id="item-selection" class="item-selection">
+      <section id="item-selection" class="item-selection" style="display: none">
         <div class="row">
-          <div class="col-md-10 mx-auto">
+          <div class="col-12">
             <h2 id="item-title" class="section-title">Pilih Item</h2>
 
-            <!-- Tombol kembali dipindah ke bawah judul -->
-            <div class="d-flex justify-content-between align-items-center mb-4">
-              <button class="back-button" onclick="showGameSelection()">
+            <!-- Tombol kembali dan filter -->
+            <div
+              class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-3"
+            >
+              <button
+                class="back-button mb-3 mb-md-0"
+                onclick="showGameSelection()"
+              >
                 <i class="fas fa-arrow-left me-2"></i>Kembali ke Pilihan Game
               </button>
 
-              <!-- Pilihan Tipe Akun/Item dipindah ke sini -->
+              <!-- Pilihan Tipe Akun/Item -->
               <div class="filter-buttons">
                 <button class="filter-btn active" onclick="filterItems('all')">
                   All
@@ -963,8 +1057,8 @@
               BERTANYA SEBELUM MEMBELI!
             </div>
 
-            <!-- Tabel Item -->
-            <div class="table-responsive">
+            <!-- Tabel Item dengan container untuk scroll horizontal -->
+            <div class="item-table-container">
               <table class="item-table">
                 <thead>
                   <tr>
@@ -985,10 +1079,10 @@
       </section>
 
       <!-- Donation Section -->
-      <section id="donation" class="my-5 py-5">
+      <section id="donation" class="my-5 py-4">
         <h2 class="section-title">Donasi & Pembelian</h2>
         <div class="row">
-          <div class="col-md-10 mx-auto">
+          <div class="col-12">
             <div class="card">
               <div class="card-body">
                 <h4 class="card-title text-center mb-4">
@@ -1015,8 +1109,8 @@
                   <div class="channel-action">
                     <a
                       href="https://sociabuzz.com/delfabloxstore"
-                      class="btn btn-primary"
-                      >Beli Sekarang Ges</a
+                      class="btn btn-primary btn-custom"
+                      >Beli Sekarang</a
                     >
                   </div>
                 </div>
@@ -1037,7 +1131,7 @@
                   <div class="channel-action">
                     <a
                       href="https://wa.me/6288227789219?text=Halo%20Admin%20DelfabLox%20Store,%20aku%20mau%20beli%"
-                      class="btn btn-whatsapp"
+                      class="btn btn-whatsapp btn-custom"
                       >Hubungi</a
                     >
                   </div>
@@ -1059,7 +1153,7 @@
                   <div class="channel-action">
                     <a
                       href="https://www.tiktok.com/@ikkypixelized?_t=ZS-8zR6z1xV90L&_r=1"
-                      class="btn btn-tiktok"
+                      class="btn btn-tiktok btn-custom"
                     >
                       <i class="fab fa-tiktok me-2"></i>Follow
                     </a>
@@ -1085,7 +1179,7 @@
                   <div class="channel-action">
                     <a
                       href="https://sociabuzz.com/ikkypixelized"
-                      class="btn btn-donation"
+                      class="btn btn-donation btn-custom"
                       >Donasi</a
                     >
                   </div>
@@ -1104,7 +1198,7 @@
                   <div class="channel-action">
                     <a
                       href="https://www.facebook.com/delfablox.store.id/"
-                      class="btn btn-primary"
+                      class="btn btn-primary btn-custom"
                       >Follow</a
                     >
                   </div>
@@ -1121,7 +1215,7 @@
                     </div>
                   </div>
                   <div class="channel-action">
-                    <a href="" class="btn btn-primary">Join</a>
+                    <a href="" class="btn btn-primary btn-custom">Join</a>
                   </div>
                 </div>
               </div>
@@ -1131,10 +1225,10 @@
       </section>
 
       <!-- Social Media Section -->
-      <section id="contact" class="my-5 extreme-5">
+      <section id="contact" class="my-5 py-4">
         <h2 class="section-title">Hubungi Kami</h2>
         <div class="row">
-          <div class="col-md-8 mx-auto">
+          <div class="col-12">
             <div class="card">
               <div class="card-body text-center">
                 <h4 class="card-title mb-4">Ikuti Kami di Media Sosial</h4>
@@ -1190,10 +1284,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
       // Data item untuk setiap game
-      // all :  Semua Tipe
-      // Akun : Akun
-      // Style : Item
-      // Zone : Joki
       const gameItems = {
         "steal-brainrot": {
           title: "Steal a Brainrot - Pilih Brainrot",
@@ -1356,7 +1446,7 @@
               name: "Kur Kur (Mutasi)",
               type: "style",
               price: "Rp 12.000",
-              stock: 2,
+              stock: 1,
               stockStatus: "low",
             },
             {
@@ -1567,14 +1657,14 @@
       // Fungsi untuk membuat efek partikel
       function createParticles() {
         const container = document.getElementById("particles-container");
-        const particleCount = 30;
+        const particleCount = 20; // Reduced for mobile performance
 
         for (let i = 0; i < particleCount; i++) {
           const particle = document.createElement("div");
           particle.classList.add("particle");
 
-          // Ukuran extreme
-          const size = Math.random() * 20 + 5;
+          // Ukuran partikel
+          const size = Math.random() * 15 + 5;
           particle.style.width = `${size}px`;
           particle.style.height = `${size}px`;
 
@@ -1623,7 +1713,7 @@
         document.getElementById("game-selection").style.display = "block";
         document.getElementById("item-selection").style.display = "none";
         window.scrollTo({
-          top: document.getElementById("game-selection").offsetTop - 100,
+          top: 0,
           behavior: "smooth",
         });
       }
@@ -1641,7 +1731,7 @@
         filterItems("all");
 
         window.scrollTo({
-          top: document.getElementById("item-selection").offsetTop - 100,
+          top: document.getElementById("item-selection").offsetTop - 70,
           behavior: "smooth",
         });
       }
@@ -1657,23 +1747,7 @@
           btn.classList.remove("active");
         });
 
-        if (type === "all") {
-          document
-            .querySelector("[onclick=\"filterItems('all')\"]")
-            .classList.add("active");
-        } else if (type === "akun") {
-          document
-            .querySelector("[onclick=\"filterItems('akun')\"]")
-            .classList.add("active");
-        } else if (type === "style") {
-          document
-            .querySelector("[onclick=\"filterItems('style')\"]")
-            .classList.add("active");
-        } else if (type === "zone") {
-          document
-            .querySelector("[onclick=\"filterItems('zone')\"]")
-            .classList.add("active");
-        }
+        event.target.classList.add("active");
 
         // Filter dan tampilkan item
         gameData.items.forEach((item) => {
@@ -1682,20 +1756,22 @@
             const isOutOfStock = item.stockStatus === "out";
 
             row.innerHTML = `
-              <td>${item.name}</td>
-              <td>${getStockLabel(item.stock, item.stockStatus)}</td>
-              <td>${getTypeLabel(item.type)}</td>
-              <td>${item.price}</td>
-              <td>
-                <button class="buy-btn" onclick="buyItem('${item.name}', '${
-              item.price
-            }', ${isOutOfStock})" ${isOutOfStock ? "disabled" : ""}>
-                  <i class="fas fa-shopping-cart me-1"></i>${
-                    isOutOfStock ? "Habis" : "Beli"
-                  }
-                </button>
-              </td>
-            `;
+                        <td>${item.name}</td>
+                        <td>${getStockLabel(item.stock, item.stockStatus)}</td>
+                        <td>${getTypeLabel(item.type)}</td>
+                        <td>${item.price}</td>
+                        <td>
+                            <button class="buy-btn" onclick="buyItem('${
+                              item.name
+                            }', '${item.price}', ${isOutOfStock})" ${
+              isOutOfStock ? "disabled" : ""
+            }>
+                                <i class="fas fa-shopping-cart me-1"></i>${
+                                  isOutOfStock ? "Habis" : "Beli"
+                                }
+                            </button>
+                        </td>
+                    `;
             tableBody.appendChild(row);
           }
         });
@@ -1772,9 +1848,7 @@
               }
             });
           },
-          {
-            threshold: 0.1,
-          }
+          { threshold: 0.1 }
         );
 
         animatedElements.forEach((el) => {
@@ -1785,12 +1859,30 @@
         // Tombol WhatsApp
         const waButtons = document.querySelectorAll('a[href*="wa.me"]');
         waButtons.forEach((button) => {
-          button.addEventListener("click", function () {
-            alert(
-              "Anda akan diarahkan ke WhatsApp untuk menghubungi admin kami."
-            );
+          button.addEventListener("click", function (e) {
+            if (window.innerWidth < 768) {
+              e.preventDefault();
+              alert(
+                "Anda akan diarahkan ke WhatsApp untuk menghubungi admin kami."
+              );
+              window.location.href = this.href;
+            }
           });
         });
+
+        // Initialize game selection view
+        showGameSelection();
+      });
+
+      // Handle window resize
+      window.addEventListener("resize", function () {
+        // Adjust any necessary elements on resize
+        const navbar = document.getElementById("navbar");
+        if (window.scrollY > 50) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
       });
     </script>
   </body>
